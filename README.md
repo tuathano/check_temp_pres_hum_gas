@@ -47,7 +47,7 @@ On Nagios server (e.g. add the service definition on frp-nagios01):
 
     define service{
         use                     rp3-service
-        host_name               frp-nagios01
+        host_name               <host_name>
         service_description     Enviromental Monitoring BME680
         check_command           check_nrpe!check_environ -t 90 -n
         #action_url              /nagiosgraph/cgi-bin/show.cgi?host=$HOSTNAME$&service=$SERVICEDESC$&geom=1000x200'$.....
