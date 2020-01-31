@@ -35,7 +35,7 @@ Save check_temp_pres_hum_gas.py file to /usr/lib/nagios/plugins/
  
 Add to NRPE (/etc/nagios/nrpe.cfg):
 
-command[check_environ]=python3 /usr/lib/nagios/plugins/check_temp_pres_hum_gas.py 12 28 18 25 10 100 20 80 10000 10000000 500000 9000000 900 1070 920 1060 5 1
+    command[check_environ]=python3 /usr/lib/nagios/plugins/check_temp_pres_hum_gas.py 12 28 18 25 10 100 20 80 10000 10000000 500000 9000000 900 1070 920 1060 5 1
 
 and restart NRPE:
 
@@ -45,7 +45,7 @@ and restart NRPE:
 
 On Nagios server (e.g. add the service definition on frp-nagios01):
 
-define service{
+    define service{
         use                     rp3-service
         host_name               frp-nagios01
         service_description     Enviromental Monitoring BME680
@@ -59,18 +59,18 @@ Appendix (optional)
 
 1. In /usr/local/nagiosgraph/etc/nagiosgraph.conf update:
 
-    logarithmic="BME680 Enviromental Monitoring"
-    rrdoptsfile=/usr/local/nagiosgraph/etc/rrdopts.conf 
+       logarithmic="BME680 Enviromental Monitoring"
+       rrdoptsfile=/usr/local/nagiosgraph/etc/rrdopts.conf 
 
 2. In /usr/local/nagiosgraph/etc/rrdopts.conf at line:
 
-    BME680 Enviromental Monitoring=-o 
+       BME680 Enviromental Monitoring=-o 
 
 3. Check all ok:
 
-    sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg 
+       sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg 
 
 4. Restart Nagios/Apache:
 
-    sudo service nagios restart 
+       sudo service nagios restart 
 
