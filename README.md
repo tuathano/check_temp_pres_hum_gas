@@ -57,14 +57,12 @@ Appendix (optional)
 
  Make Nagiosgraph plot logarithmic y-axis for specific service
 
-1. In /usr/local/nagiosgraph/etc/nagiosgraph.conf:
+1. In /usr/local/nagiosgraph/etc/nagiosgraph.conf update:
 
     logarithmic="BME680 Enviromental Monitoring"
     rrdoptsfile=/usr/local/nagiosgraph/etc/rrdopts.conf 
 
-2. In /usr/local/nagiosgraph/etc/rrdopts.conf:
-
-    # My custom check command needs logarithmic scaling -o option
+2. In /usr/local/nagiosgraph/etc/rrdopts.conf at line:
 
     BME680 Enviromental Monitoring=-o 
 
