@@ -52,3 +52,27 @@ define service{
         check_command           check_nrpe!check_environ -t 90 -n
         #action_url              /nagiosgraph/cgi-bin/show.cgi?host=$HOSTNAME$&service=$SERVICEDESC$&geom=1000x200'$.....
         }
+        
+Appendix (optional)
+
+ Make Nagiosgraph plot logarithmic y-axis for specific service
+
+1. In /usr/local/nagiosgraph/etc/nagiosgraph.conf:
+
+    logarithmic="BME680 Enviromental Monitoring"
+    rrdoptsfile=/usr/local/nagiosgraph/etc/rrdopts.conf 
+
+2. In /usr/local/nagiosgraph/etc/rrdopts.conf:
+
+    # My custom check command needs logarithmic scaling -o option
+
+    BME680 Enviromental Monitoring=-o 
+
+3. Check all ok:
+
+    sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg 
+
+4. Restart Nagios/Apache:
+
+    sudo service nagios restart 
+
